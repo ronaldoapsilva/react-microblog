@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import Stack from 'react-bootstrap/Stack';
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+export default function App() {
+  const post = [
+    {
+      id: 1,
+      text: 'Hello, world!',
+      timestamp: 'a minute ago',
+      author: {
+        username: 'susan',
+      }
+    },
+    {
+      id: 2,
+      text: 'Second Post',
+      timestamp: 'an hour ago',
+      author: {
+        username: 'john',
+      }
+    },
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid className="App">
+      <Header></Header>
+      <Container>
+        <Stack direction="horizontal">
+          <Sidebar></Sidebar>
+          <Container>
+            {post.length === 0 ?
+              <p>There are no blog post.</p>
+              :
+              post.map(post => {
+                return (
+                  <p key={post.id}>
+                    <b>{post.author.username}</b> &mdash; {post.timestamp}
+                    <br></br>
+                    {post.text}
+                  </p>
+                );
+              })
+            }
+          </Container>
+        </Stack>
+      </Container>
+    </Container >
   );
 }
-
-export default App;
