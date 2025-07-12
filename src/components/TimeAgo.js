@@ -12,7 +12,7 @@ const secondsTable = [
 const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: 'auto' });
 
 function getTimeAgo(date) {
-  const seconds = Math.round((date.getTime() - new Date().getTime() / 1000));
+  const seconds = Math.round((date.getTime() - new Date().getTime()) / 1000);
   const absSeconds = Math.abs(seconds);
   let bestUnit, bestTime, bestInterval;
   for (let [unit, unitSeconds] of secondsTable) {
