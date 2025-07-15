@@ -4,13 +4,26 @@ import { useApi } from "../contexts/ApiProvider";
 import Post from "./Post";
 
 
-export default function Posts() {
-  const [posts, setPosts] = useState();
+export default function Posts({ content }) {
+  const [posts, setPosts] = useState(null);
   const api = useApi();
 
+  let url;
+  switch (content) {
+    case 'feed':
+    case undefined:
+      url = '/feed';
+      break;
+    case 'explore':
+      url = '/posts';
+      break;
+    default:
+      url = `/users/${content}/posts`;
+      break;
+  }
   useEffect(() => {
     (async () => {
-      const response = await api.get('/feed');
+      const response = await api.get(url);
       if (response.ok) {
         setPosts(response.body.data);
       }
@@ -18,7 +31,7 @@ export default function Posts() {
         setPosts(null)
       }
     })();
-  }, [api]);
+  }, [api, url]);
 
   return (
     <>
