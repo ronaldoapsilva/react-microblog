@@ -11,7 +11,7 @@ export default function InputField(
         placeholder={placeholder}
         ref={fieldRef}
       />
-      <Form.Text className="text-dange">{error}</Form.Text>
+      <Form.Text className="text-danger">{error}</Form.Text>
     </Form.Group>
   )
 }
