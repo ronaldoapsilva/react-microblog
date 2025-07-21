@@ -15,6 +15,7 @@ export default class MicroblogApiClient {
         method: options.method,
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer' + localStorage.getItem('accessToken'),
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null
@@ -54,6 +55,28 @@ export default class MicroblogApiClient {
 
   async delete(url, options) {
     return this.request({ method: 'DELETE', url, ...options });
+  }
+
+  async login(username, password) {
+    const response = await this.post('/tokens', null, {
+      headers: {
+        Authorization: 'Basic' + btoa(username + ":" + password)
+      }
+    });
+    if (!response.ok) {
+      return response.status === 401 ? 'fail' : 'error';
+    }
+    localStorage.setItem('accessToken', response.body.access_token);
+    return 'ok';
+  }
+
+  async logout() {
+    await this.delete('/token')
+    localStorage.removeItem('accessToken')
+  }
+
+  isAuthenticated() {
+    return localStorage.getItem('accessToken') !== null;
   }
 
 }

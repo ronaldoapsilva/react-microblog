@@ -8,6 +8,7 @@ import UserPage from "./pages/UserPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import FlashProvider from "./contexts/FlashProvider";
+import UserProvider from "./contexts/UserProvider";
 
 export default function App() {
   return (
@@ -15,15 +16,17 @@ export default function App() {
       <BrowserRouter>
         <FlashProvider>
           <ApiProvider>
-            <Header />
-            <Routes>
-              <Route path="/" element={<FeedPage />}></Route>
-              <Route path="/explore" element={<ExplorePage />}></Route>
-              <Route path="/user/:username" element={<UserPage />}></Route>
-              <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="/register" element={<RegistrationPage />} />
-              <Route path="*" element={<Navigate to="/"></Navigate>}></Route>
-            </Routes>
+            <UserProvider>
+              <Header />
+              <Routes>
+                <Route path="/" element={<FeedPage />}></Route>
+                <Route path="/explore" element={<ExplorePage />}></Route>
+                <Route path="/user/:username" element={<UserPage />}></Route>
+                <Route path="/login" element={<LoginPage />}></Route>
+                <Route path="/register" element={<RegistrationPage />} />
+                <Route path="*" element={<Navigate to="/"></Navigate>}></Route>
+              </Routes>
+            </UserProvider>
           </ApiProvider>
         </FlashProvider>
       </BrowserRouter>
