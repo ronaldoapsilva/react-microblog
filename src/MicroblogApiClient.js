@@ -15,7 +15,7 @@ export default class MicroblogApiClient {
         method: options.method,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer' + localStorage.getItem('accessToken'),
+          'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
           ...options.headers,
         },
         body: options.body ? JSON.stringify(options.body) : null
@@ -60,7 +60,7 @@ export default class MicroblogApiClient {
   async login(username, password) {
     const response = await this.post('/tokens', null, {
       headers: {
-        Authorization: 'Basic' + btoa(username + ":" + password)
+        Authorization: 'Basic ' + btoa(username + ":" + password)
       }
     });
     if (!response.ok) {
