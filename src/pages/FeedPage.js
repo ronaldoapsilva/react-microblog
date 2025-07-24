@@ -3,8 +3,8 @@ import Posts from "../components/Posts";
 
 export default function FeedPage() {
   return (
-  <Body sidebar>
-    <Posts></Posts>
-  </Body>
+    <Body sidebar>
+      <Posts write={true}></Posts>
+    </Body>
   );
 }

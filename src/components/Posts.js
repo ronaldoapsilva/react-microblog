@@ -3,9 +3,9 @@ import { Spinner } from "react-bootstrap";
 import { useApi } from "../contexts/ApiProvider";
 import Post from "./Post";
 import More from "./More";
+import Write from "./Write";
 
-
-export default function Posts({ content }) {
+export default function Posts({ content, write }) {
   const [posts, setPosts] = useState(null);
   const [pagination, setPagination] = useState();
   const api = useApi();
@@ -45,9 +45,13 @@ export default function Posts({ content }) {
       setPagination(response.body.pagination);
     }
   };
+  const showPost = (newPost) => {
+    setPosts([newPost, ...posts]);
+  }
 
   return (
     <>
+    {write && <Write showPost={showPost}/>}
       {posts === undefined ?
         <Spinner animation="border" />
         :
