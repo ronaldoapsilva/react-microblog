@@ -26,11 +26,14 @@
   background-color: #eee;
 }
 
-.Sidebar a:visited {
+.Sidebar a,
+.dropdown-item,
+.dropdown-item.active {
   color: #444;
 }
 
-.Sidebar.nav-item.active {
+.Sidebar .nav-item .active,
+.dropdown-item.active {
   background-color: #def;
 }
 
