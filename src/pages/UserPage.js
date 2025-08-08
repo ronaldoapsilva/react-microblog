@@ -49,12 +49,28 @@ export default function UserPage() {
     navigate('/edit');
   };
 
-  const follow = () => {
-    // TODO
+  const follow = async () => {
+    const response = await api.post('/me/following/' + user.id);
+    if (response.ok) {
+      flash(
+        <>
+          You are now following <b>{user.username}</b>.
+        </>, 'success'
+      );
+      setIsFollower(true);
+    }
   };
 
-  const unfollow = () => {
-    // TODO
+  const unfollow = async () => {
+    const response = await api.delete('/me/following/' + user.id);
+    if (response.ok) {
+      flash(
+        <>
+          You have unfollowed <b>{user.username}</b>.
+        </>, 'sucess'
+      );
+      setIsFollower(false);
+    }
   };
 
   return (

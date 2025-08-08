@@ -20,7 +20,7 @@ export default class MicroblogApiClient {
           ...options.headers,
         },
         credentials: options.url === '/tokens' ? 'include' : 'omit',
-        body: options.body ? JSON.stringify(options.body) : null
+        body: options.body ? JSON.stringify(options.body) : null,
       });
     }
     catch (error) {
@@ -31,7 +31,7 @@ export default class MicroblogApiClient {
           return {
             code: 500,
             message: 'The server is unresponsive',
-            descriptio: error.toString(),
+            description: error.toString(),
           };
         }
       };
@@ -88,8 +88,8 @@ export default class MicroblogApiClient {
   }
 
   async logout() {
-    await this.delete('/token')
-    localStorage.removeItem('accessToken')
+    await this.delete('/tokens')
+    localStorage.removeItem('accessToken');
   }
 
   isAuthenticated() {
