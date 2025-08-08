@@ -6,6 +6,7 @@ import PublicRoute from "./components/PublicRoute";
 import ApiProvider from "./contexts/ApiProvider";
 import FlashProvider from "./contexts/FlashProvider";
 import UserProvider from "./contexts/UserProvider";
+import ChangePasswordPage from './pages/ChangePasswordPage';
 import EditUserPage from "./pages/EditUserPage";
 import ExplorePage from "./pages/ExplorePage";
 import FeedPage from "./pages/FeedPage";
@@ -30,6 +31,7 @@ export default function App() {
                       <Route path="/" element={<FeedPage />}/>
                       <Route path="/explore" element={<ExplorePage />}/>
                       <Route path="/user/:username" element={<UserPage />}/>
+                      <Route path="/password" element={<ChangePasswordPage/>}/>
                       <Route path="*" element={<Navigate to="/" />}/>
                       <Route path="/edit" element={<EditUserPage/>}/>
                     </Routes>

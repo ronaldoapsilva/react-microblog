@@ -1,8 +1,8 @@
-import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Spinner from 'react-bootstrap/Spinner';
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../contexts/UserProvider';
@@ -28,6 +28,9 @@ export default function Header() {
                       Profile
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
+                    <NavDropdown.Item as={NavLink} to="/password">
+                      Change Password
+                    </NavDropdown.Item>
                     <NavDropdown.Item onClick={logout}>
                       Logout
                     </NavDropdown.Item>
