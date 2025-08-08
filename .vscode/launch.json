@@ -11,8 +11,25 @@
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
       "skipFiles": [
+        "<node_internals>/**",
         "**/node_modules/**"
-      ]      
+      ]
+    },
+    {
+      "name": "Launch React App in Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "reloadOnAttach": true,
+      "reAttach": true,
+      "firefoxExecutable": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+      "pathMappings": [
+        {
+          "url": "webpack:///",
+          "path": "${workspaceFolder}/"
+        }
+      ]
     }
   ]
 }

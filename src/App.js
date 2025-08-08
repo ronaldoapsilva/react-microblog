@@ -1,16 +1,17 @@
 import Container from "react-bootstrap/Container";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import ApiProvider from "./contexts/ApiProvider";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import FeedPage from "./pages/FeedPage";
-import ExplorePage from "./pages/ExplorePage";
-import UserPage from "./pages/UserPage";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
-import FlashProvider from "./contexts/FlashProvider";
-import UserProvider from "./contexts/UserProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import ApiProvider from "./contexts/ApiProvider";
+import FlashProvider from "./contexts/FlashProvider";
+import UserProvider from "./contexts/UserProvider";
+import EditUserPage from "./pages/EditUserPage";
+import ExplorePage from "./pages/ExplorePage";
+import FeedPage from "./pages/FeedPage";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
+import UserPage from "./pages/UserPage";
 
 export default function App() {
   return (
@@ -26,10 +27,11 @@ export default function App() {
                 <Route path="*" element={
                   <PrivateRoute>
                     <Routes>
-                      <Route path="/" element={<FeedPage />}></Route>
-                      <Route path="/explore" element={<ExplorePage />}></Route>
-                      <Route path="/user/:username" element={<UserPage />}></Route>
-                      <Route path="*" element={<Navigate to="/" />}></Route>
+                      <Route path="/" element={<FeedPage />}/>
+                      <Route path="/explore" element={<ExplorePage />}/>
+                      <Route path="/user/:username" element={<UserPage />}/>
+                      <Route path="*" element={<Navigate to="/" />}/>
+                      <Route path="/edit" element={<EditUserPage/>}/>
                     </Routes>
                   </PrivateRoute>
                 } />
