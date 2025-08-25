@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Body from "../components/Body";
 import InputField from "../components/InputField";
-import { useUser } from "../contexts/UserProvider";
 import { useFlash } from "../contexts/FlashProvider";
+import { useUser } from "../contexts/UserProvider";
 
 export default function LoginPage() {
   const [formErrors, setFormErrors] = useState({});
@@ -61,6 +61,7 @@ export default function LoginPage() {
           error={formErrors.password} fieldRef={passwordField} />
         <Button variant="primary" type="submit">Login</Button>
       </Form>
+      <p>Forgot your password? You can <Link to="/reset-request">reset it</Link></p>
       <p>Don&apos;t have an account? <Link to="/register"> Register here</Link>!</p>
     </Body>
   )
